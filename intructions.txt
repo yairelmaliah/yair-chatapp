@@ -1,0 +1,39 @@
+Python 102 Milestone: Chat
+
+The milestone is to write a Chat service.
+A simple html/js client that uses the service is provided.
+
+What is a Chat service?
+A chat service accepts three apis
+GET /<room> - will return the static html provided to you, regardless of the room provided.
+POST /chat/<room> - accepts a chat line from a user
+ - will accept 2 form fields - username & message
+ - will save date, time, username & message per room
+GET /chat/<room> - returns the full chat in a room
+ - chat formatted as a list of "\n" delimited lines (1 per message)
+ - each line formatted as "[2018-02-25 14:00:51] omri: hi everybody!"
+
+Following is a recommendation on implementation order.
+Enjoy, and feel free to ask any question.
+Once done - go to the bonus devops section.
+
+(1) Implement flask app that returns the static html on GET /. Check it.
+(2) Now add GET /<room>. No difference
+(3) Implement GET /chat/<room>, and test it with data you created manually. for instance, if you save the room data in a file - just create on manually.
+(4) Implement POST /chat/<room>. Check in multiple rooms and multiple browsers.
+
+=== Bonus DevOps Section ===
+(1) Package server in docker
+(2) Create docker-compose toplogy comprising of:
+- 3 chat servers
+- nginx container configured to load balance the 3 instances and expose them on port 80. NOTE that you do not need to expose ports for any of the 3 servers!
+(3) Test and prove that:
+- You are accessing all 3 servers (The UI should show a friendly server name)
+- A chat message sent to one is visible on the others
+(4) Make this work with arbitrary scaling, i.e. 1 nginx and several chat servers as defined by docker-compose "scale" parameter
+- Note that in the case of --scale, it is good enough if the UI just shows any indication that differs between servers. It does not have to be "friendly"
+
+You can read about nginx load balancing at https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/ and https://www.nginx.com/resources/wiki/start/topics/examples/loadbalanceexample/ - or just google it :-)
+
+=== Double Bonus ===
+Replace the file based storage with a dockerized MySQL.
