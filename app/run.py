@@ -3,7 +3,7 @@ from db import mysql
 from app import app
 import pymysql
 from datetime import datetime
-import socket   
+import socket
 
 # Get container IP
 hostname=socket.gethostname()   
