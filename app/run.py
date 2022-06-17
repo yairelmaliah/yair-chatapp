@@ -15,8 +15,7 @@ try:
 except:
   pass
 
-conn = mysql.connect()
-cursor = conn.cursor(pymysql.cursors.DictCursor)
+
 
 
 @app.route('/')
@@ -40,6 +39,9 @@ def create_message(room_name):
     print(data, flush=True)
 
     sql = "INSERT INTO `rooms` (`room_name`, `username`, `msg`, `msg_date`) VALUES (%s, %s, %s, %s)"
+    conn = mysql.connect()
+    
+    cursor = conn.cursor(pymysql.cursors.DictCursor)
     
     cursor.execute(sql, (room_name, data['username'], data['msg'], data['time']))
 
@@ -58,8 +60,9 @@ def get_room(room_name=""):
   if not room_name:
     room_name = "global"
   
+  conn = mysql.connect()
+  cursor = conn.cursor(pymysql.cursors.DictCursor)
   sql = "SELECT * FROM rooms WHERE room_name=%s"
-
   cursor.execute(sql, (room_name,))
 
   res = cursor.fetchall()

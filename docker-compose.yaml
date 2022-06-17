@@ -19,7 +19,8 @@ services:
     depends_on:
       - db
   nginx:
-    build: ./nginx 
+    build: ./nginx
+    restart: always
     ports:
     - "80:80"
     depends_on:
