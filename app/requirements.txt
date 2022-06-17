@@ -6,3 +6,6 @@ MarkupSafe==2.1.1
 six==1.16.0
 Werkzeug==2.1.2
 WTForms==3.0.1
+Flask-MySQL
+PyMySQL
+cryptography

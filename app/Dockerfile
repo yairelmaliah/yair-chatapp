@@ -10,4 +10,4 @@ COPY . .
 
 ENTRYPOINT [ "python3" ]
 
-CMD [ "app.py" ]
+CMD [ "run.py" ]
