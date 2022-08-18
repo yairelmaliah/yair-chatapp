@@ -56,7 +56,7 @@ def get_room(room_name=""):
   sql = "SELECT * FROM rooms WHERE room_name=%s"
   cursor.execute(sql, (room_name,))
   res = cursor.fetchall()
-  
+
   # Get numbers of romm messages
   res_len = len(list(res))
 

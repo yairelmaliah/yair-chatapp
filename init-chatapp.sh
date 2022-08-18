@@ -10,10 +10,10 @@ fi
 
 # Run containers
 docker-compose up --scale app=3 -d --build
-
-echo -e "\n====================="
-echo "Chat app is running..."
-echo "please go to - http://localhost to start using this little app :))" 
-echo -e "====================="
-
-exit 0
+if [ $? -eq 0 ]; then 
+    echo -e "\n====================="
+    echo "Chat app is running..."
+    echo "please go to - http://localhost to start using this little app :))" 
+    echo -e "====================="
+    exit 0
+fi
